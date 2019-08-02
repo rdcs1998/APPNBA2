@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">NBATabs2</string>
+    <string name="tab_text_1">Celtics</string>
+    <string name="tab_text_2">Clippers</string>
+    <string name="Clippers">clippers_logo</string>
+    <string name="bos">bos</string>
+    <string name="Hawks">Hawks</string>
+    <string name="tab_text_3">Hawks</string>
+    <string name="dynLogo">dynLogo</string>
+    <string name="dynview">dynView</string>
+</resources>
