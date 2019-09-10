@@ -53,30 +53,39 @@ public class MainActivity extends AppCompatActivity implements TeamDyn.FragmentD
         PlayerBase PB = new PlayerBase();
         for(int iter=0;iter<PB.playerList.size();++iter){
             if(PB.playerList.get(iter).getIconPos()==0){
-                CelticsNewCap+=PB.playerList.get(iter).getSalary();
+                CelticsNewCap+=PB.playerList.get(iter).getSalary();//total
             }
             if(PB.playerList.get(iter).getIconPos()==1){
-                ClippersNewCap+=PB.playerList.get(iter).getSalary();
+                ClippersNewCap+=PB.playerList.get(iter).getSalary();//total
             }
             if(PB.playerList.get(iter).getIconPos()==2){
-                HawksNewCap+=PB.playerList.get(iter).getSalary();
+                HawksNewCap+=PB.playerList.get(iter).getSalary();//total
             }
         }
-        int clips= (int) (ClippersCap*1.25);
-        int hawks=(int)(HawksCap*1.25);
-        int celtics=(int)(CelticsCap*1.25);
-        ClippersNewCap=ClippersNewCap;
-        HawksNewCap=HawksNewCap;
-        CelticsNewCap=CelticsNewCap;
+        int clips=0;//outgoing
+        int hawks=0;//outgoing
+        int celtics=0;//outgoing
+        for(int iter = 0;iter<PB.playerList.size();++iter){
+            if(PB.playerList.get(iter).getTeam()=="BOS"&&PB.playerList.get(iter).getIconPos()!=0){
+                celtics+=PB.playerList.get(iter).getSalary();
+            }
+            if(PB.playerList.get(iter).getTeam()=="LAC"&&PB.playerList.get(iter).getIconPos()!=1){
+                clips+=PB.playerList.get(iter).getSalary();
+            }
+            if(PB.playerList.get(iter).getTeam()=="ATL"&&PB.playerList.get(iter).getIconPos()!=2){
+                hawks+=PB.playerList.get(iter).getSalary();
+            }
+        }
+        ClippersNewCap=(int)(ClippersNewCap-(clips*1.25)-ClippersCap);
+        CelticsNewCap=(int)(CelticsNewCap-(celtics*1.25)-CelticsCap);
+        HawksNewCap=(int)(HawksNewCap-(hawks*1.25)-HawksCap);
         String capStringClips = numberFormat.format(ClippersNewCap);
         String capStringCeltics = numberFormat.format(CelticsNewCap);
         String capStringHawks=numberFormat.format(HawksNewCap);
-        if(ClippersNewCap>0){result+="Clippers";}
-        if(CelticsNewCap>0){result+="Celtics";}
-        if(HawksNewCap>0){result+="Hawks";}
-        result+=HawksNewCap;
-        result+=ClippersNewCap;
-        result+=CelticsNewCap;
+        if(ClippersNewCap>0){result+="Clippers will be taking in: "+capStringClips+" more than allowed.\n";}
+        if(CelticsNewCap>0){result+="Celtics will be taking in: " +capStringCeltics+" more than allowed.\n";}
+        if(HawksNewCap>0){result+="Hawks will be taking in: "+capStringHawks+" more than allowed.\n";}
+        if(result==""){result+="All salaries are matching.";}
 
         return result;
     }
