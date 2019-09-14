@@ -12,11 +12,10 @@ class Player {
     int offset;
     int iconPos;
 
-    public Player(String name,int salary,int age,boolean checked,String team,int TeamIcon,int iconPos){
+    public Player(String name,int salary,int age,String team,int TeamIcon,int iconPos){
         this.name=name;
         this.salary=salary;
         this.age=age;
-        this.checked=checked;
         this.team=team;
         this.TeamIcon = TeamIcon;
         this.offset=0;

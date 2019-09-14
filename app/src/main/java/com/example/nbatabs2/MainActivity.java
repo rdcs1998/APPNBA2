@@ -6,13 +6,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.nbatabs2.ui.main.SectionsPagerAdapter;
 
@@ -21,6 +24,12 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements TeamDyn.FragmentDynListener {
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,10 +44,13 @@ public class MainActivity extends AppCompatActivity implements TeamDyn.FragmentD
                 .setAction("Action", null).show();
 
 
+
     }
     public void MakeSnackBar(){
         Snackbar.make(findViewById(android.R.id.content),Status(), Snackbar.LENGTH_INDEFINITE)
                 .setAction("Action", null).show();
+        TextView textView=findViewById(R.id.textView3);
+        textView.setText(Status());
     }
 
     public String Status(){
@@ -76,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements TeamDyn.FragmentD
                 hawks+=PB.playerList.get(iter).getSalary();
             }
         }
-        ClippersNewCap=(int)(ClippersNewCap-(clips*1.25)-ClippersCap);
+        ClippersNewCap=(int)(ClippersNewCap-(clips*1.25)-ClippersCap-1000000);
         CelticsNewCap=(int)(CelticsNewCap-(celtics*1.25)-CelticsCap);
         HawksNewCap=(int)(HawksNewCap-(hawks*1.25)-HawksCap);
         String capStringClips = numberFormat.format(ClippersNewCap);

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -41,12 +43,25 @@ public class TeamDyn extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    public static TeamDyn newInstance(Team _team){
+        Bundle args = new Bundle();
+        TeamDyn fragment = new TeamDyn(_team);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     public TeamDyn(String _name,int _logo,int _iconlogo,int _OGSalary){
         this.Logo=_logo;
         this.Name=_name;
         this.iconLogo = _iconlogo;
         this.OGSalary =_OGSalary;
+    }
+
+    public TeamDyn(Team _team){
+        this.Logo=_team.getTeamLogo();
+        this.iconLogo=_team.getTeamIcon();
+        this.Name=_team.getName();
+        this.OGSalary=_team.getSalaryCap();
     }
 
     @Override
@@ -88,10 +103,6 @@ public class TeamDyn extends Fragment {
                     playerList.get(i).setTeamIcon(iconList.get(newPos));
                 }
                 listener.MakeSnackBar();
-//                }else{tt.setChecked(false);
-//                    tt.setCheckMarkDrawable(playerList.get(i).getTeamIcon());
-//                    playerList.get(i).setChecked(false);
-//                    outgoingSalaries -= playerList.get(i).getSalary();}
 
             }
 

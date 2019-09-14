@@ -11,6 +11,10 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.example.nbatabs2.R;
 import com.example.nbatabs2.TeamDyn;
 
+import static com.example.nbatabs2.TeamBase.CelticsTeam;
+import static com.example.nbatabs2.TeamBase.ClippersTeam;
+import static com.example.nbatabs2.TeamBase.HawksTeam;
+
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
@@ -32,15 +36,15 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Return a PlaceholderFragment (defined as a static inner class below).
         switch(position){
             case 0:
-                TeamDyn celtics = TeamDyn.newInstance("BOS",R.drawable.bos,R.drawable.bosicon,76100000);
+                TeamDyn celtics = TeamDyn.newInstance(CelticsTeam);
                 return celtics;
 
             case 1:
-                TeamDyn clippers = TeamDyn.newInstance("LAC",R.drawable.lac,R.drawable.lacicon,76200000);
+                TeamDyn clippers = TeamDyn.newInstance(ClippersTeam);
                 return clippers;
             case 2:
 
-                TeamDyn hawks = TeamDyn.newInstance("ATL", R.drawable.atl,R.drawable.atlicon,25400000);
+                TeamDyn hawks = TeamDyn.newInstance(HawksTeam);
                 return hawks;
         }
         return null;

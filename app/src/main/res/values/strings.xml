@@ -8,4 +8,5 @@
     <string name="tab_text_3">Hawks</string>
     <string name="dynLogo">dynLogo</string>
     <string name="dynview">dynView</string>
+    <string name="textView">TextView</string>
 </resources>
