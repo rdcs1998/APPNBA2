@@ -76,7 +76,7 @@ public class TeamDyn extends Fragment {
         View view = inflater.inflate(R.layout.team_fragment, container, false);
         ImageView IV = (ImageView)view.findViewById(R.id.dynLogo) ;
         IV.setImageResource(this.Logo);
-        if(!listSet){
+        //if(!listSet){
             PlayerBase PB = new PlayerBase();
             for(int iter=0;iter<PB.playerList.size();++iter){
                 if(PB.playerList.get(iter).getTeam().equals(this.Name)){
@@ -84,7 +84,7 @@ public class TeamDyn extends Fragment {
                 }
             }
             iconList=PB.iconList;
-            listSet=true; }
+            //listSet=true; }
         ListView listView =(ListView) view.findViewById(R.id.dynList);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         CustomAdapter bb = new CustomAdapter(getContext(),playerList);
@@ -99,6 +99,7 @@ public class TeamDyn extends Fragment {
                 ImageView tt = (ImageView) view.findViewById(R.id.dynView);
                 if (playerList.get(i).getIconPos() <= 2) {
                     tt.setImageResource(iconList.get(newPos));
+
                     playerList.get(i).setIconPos(newPos);
                     playerList.get(i).setTeamIcon(iconList.get(newPos));
                 }
